@@ -1,0 +1,3 @@
+### Solution
+
+Looking into the deployed contract, I noticed the `oracle` address was never set. That is to say `oracle=address(0)`. This opens up the contract to a signature malleability attack. The attacker can sign an `OraclePrice` of their choosing (even with `price=0`). The signature should have a valid `v` and an invalid `r` and/or `s`. If the latter parameters are invalid, then `ecrecover` will revert. *However*, the key is that `ecrecover` returns `address(0)` upon revertion.
