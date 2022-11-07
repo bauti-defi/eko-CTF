@@ -21,7 +21,7 @@ contract Attack is Script {
             price: 0
         });
 
-        Signature signature = Signature({v: 27, r: bytes32(0), s: bytes32(0)});
+        Signature memory signature = Signature({v: 27, r: bytes32(0), s: bytes32(0)});
 
 
         vm.startBroadcast(deployerPrivateKey);
